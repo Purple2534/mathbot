@@ -6,8 +6,6 @@ certifi==2019.11.28
 cffi==1.14.0
 chardet==3.0.4
 colorama==0.4.3
-conda==4.8.2
-conda-package-handling==1.6.0
 cryptography==2.8
 decorator==4.4.1
 defusedxml==0.6.0
