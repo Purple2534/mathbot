@@ -51,10 +51,11 @@ pywin32==227
 pywinpty==0.5.7
 pyzmq==18.1.0
 qtconsole==4.6.0
-requests==2.22.0
+requests==2.7.0
 ruamel-yaml==0.15.87
 Send2Trash==1.5.0
 six==1.13.0
+telebot==0.0.3
 terminado==0.8.3
 testpath==0.4.4
 tornado==6.0.3

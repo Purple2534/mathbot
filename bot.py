@@ -1,10 +1,6 @@
-# - *- coding: utf- 8 - *-
 import telebot
 import config
 import random
-import sys
-reload(sys)
-sys.setdefaultencoding('utf-8')
 
 from telebot import types
  
