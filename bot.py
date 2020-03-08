@@ -1,6 +1,5 @@
 import telebot
 import config
-import random
 
 from telebot import types
  
@@ -11,8 +10,8 @@ def welcome(message):
 
     # keyboard
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    item1 = types.KeyboardButton("Случайная задача")
-    item2 = types.KeyboardButton("Я сам(а) выберу задачу")
+    item1 = types.KeyboardButton("Открыть дополнительные материалы")
+    item2 = types.KeyboardButton("Купить МГ")
  
     markup.add(item1, item2)
  
@@ -22,17 +21,36 @@ def welcome(message):
 @bot.message_handler(content_types=['text'])
 def lalala(message):
     if message.chat.type == 'private':
-        if message.text == 'Случайная задача':
-            bot.send_message(message.chat.id, str(random.randint(1,19)))
-        elif message.text == 'Я сам(а) выберу задачу':
+        if message.text == 'Открыть дополнительные материалы':
+
+        	markup = types.InlineKeyboardMarkup(row_width=5)
+        	item1 = types.InlineKeyboardButton("1", callback_data='1')
+        	item2 = types.InlineKeyboardButton("2", callback_data='2')
+        	item3 = types.InlineKeyboardButton("3", callback_data='3')
+        	item4 = types.InlineKeyboardButton("4", callback_data='4')
+        	item5 = types.InlineKeyboardButton("5", callback_data='5')
+        	item6 = types.InlineKeyboardButton("6", callback_data='6')
+        	item7 = types.InlineKeyboardButton("7", callback_data='7')
+        	item8 = types.InlineKeyboardButton("8", callback_data='8')
+        	item9 = types.InlineKeyboardButton("9", callback_data='9')
+        	item10 = types.InlineKeyboardButton("10", callback_data='10')
+        	item11 = types.InlineKeyboardButton("11", callback_data='11')
+        	item12 = types.InlineKeyboardButton("12", callback_data='12')
+        	
+
+        	markup.add(item1, item2, item3, item4, item5, item6, item7, item8, item9, item10, item11, item12)
+
+        	bot.send_message(message.chat.id, 'Какое задание?', reply_markup=markup)
+
+            
+        elif message.text == 'Купить МГ':
  
-            markup = types.InlineKeyboardMarkup(row_width=2)
-            item1 = types.InlineKeyboardButton("1 Часть", callback_data='good')
-            item2 = types.InlineKeyboardButton("2 Часть", callback_data='bad')
+            markup = types.InlineKeyboardMarkup(row_width=1)
+            item1 =  url_button = types.InlineKeyboardButton(text="Купить МГ", url="https://egehackplatform.ru/web/shop/43/")
  
-            markup.add(item1, item2)
+            markup.add(item1)
  
-            bot.send_message(message.chat.id, 'Из какой части?', reply_markup=markup)
+            bot.send_message(message.chat.id, 'Нажми на кнопку', reply_markup=markup)
         else:
             bot.send_message(message.chat.id, 'Я не знаю что ответить 😢')
  
@@ -41,10 +59,33 @@ def callback_inline(call):
     try:
         if call.message:
             if call.data == 'good':
-                bot.send_message(call.message.chat.id, '1. Про­стей­шие текстовые задачи:\n-Вычисления(https://math-ege.sdamgia.ru/test?theme=174)\n-Округ­ле­ние с недостатком(https://math-ege.sdamgia.ru/test?theme=1)\n-Округление с избытком(https://math-ege.sdamgia.ru/test?theme=2)\n-Проценты(https://math-ege.sdamgia.ru/test?theme=249)\n-Проценты и округление(https://math-ege.sdamgia.ru/test?theme=5)')
-            elif call.data == 'bad':
-                bot.send_message(call.message.chat.id, '13.Уравнения:\n-Иррациональные уравнения(https://math-ege.sdamgia.ru/test?theme=275)')
- 
+                bot.send_message(call.message.chat.id, '1')
+            elif call.data == '1':
+            	with open('rolik/vidos.mp4', 'rb') as video:
+                    bot.send_video(call.message.chat.id, video)
+            elif call.data == '2':
+                bot.send_message(call.message.chat.id, '3')
+            elif call.data == '3':
+            	bot.send_message(call.message.chat.id, '4')
+            elif call.data == '4':
+            	bot.send_message(call.message.chat.id, '5')
+            elif call.data == '5':
+            	bot.send_message(call.message.chat.id, '6')
+            elif call.data == '6':
+            	bot.send_message(call.message.chat.id, '7')
+            elif call.data == '7':
+            	bot.send_message(call.message.chat.id, '8')
+            elif call.data == '8':
+            	bot.send_message(call.message.chat.id, '9')
+            elif call.data == '9':
+            	bot.send_message(call.message.chat.id, '10')
+            elif call.data == '10':
+            	bot.send_message(call.message.chat.id, '11')
+            elif call.data == '11':
+            	bot.send_message(call.message.chat.id, '12')
+            elif call.data == '12':
+            	bot.send_message(call.message.chat.id, '13')
+
             # remove inline buttons
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="Если ты решил(а) не правильно, то переходи на канал с разбором такой задачи ...",
                 reply_markup=None)
