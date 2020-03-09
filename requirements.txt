@@ -55,7 +55,7 @@ python-dateutil==2.8.1
 pywinpty==0.5.7
 pyzmq==18.1.0
 qtconsole==4.6.0
-requests==2.7.0
+requests==2.20.0
 ruamel-yaml==0.15.87
 Send2Trash==1.5.0
 service-identity==18.1.0
